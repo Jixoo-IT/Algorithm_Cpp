@@ -57,9 +57,14 @@ ipch/
 *.opensdf
 *.sdf
 *.cachefile
+
+
+ *.sln
+ *.filters
+ *.user
+ *.vcxproj
  
-# Visual Studio profiler
-*.psess
-*.vsp
-*.vspx
+ #debug
+ *.exe
+ *.pdb
  
