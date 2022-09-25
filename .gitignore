@@ -68,3 +68,13 @@ ipch/
  *.exe
  *.pdb
  
+
+*.sln
+
+*.vcxproj
+
+*.filters
+
+*.vsidx
+
+*.lock
