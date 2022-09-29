@@ -1,8 +1,26 @@
+// n의 배수 고르기
+
 #include <string>
 #include <vector>
 
 using namespace std;
 
+vector<int> solution(int n, vector<int> numlist) {
+    vector<int> answer;
+
+    for (int i = 0; i < numlist.size(); i++) {
+        if (numlist[i] % n == 0) {
+            answer.push_back(numlist[i]);
+        }
+    }
+
+    return answer;
+}
+
+
+
+
+/*
 vector<int> solution(int n, vector<int> numlist) {
     vector<int> answer;
 
@@ -20,25 +38,8 @@ vector<int> solution(int n, vector<int> numlist) {
     answer.push_back(bae);
     answer.push_back(j);
 
-
-
-
-
-
     return answer;
 }
 
 
-
-
-vector<int> solution(int n, vector<int> numlist) {
-    vector<int> answer;
-
-    for (int i = 0; i < numlist.size(); i++) {
-        if (numlist[i] % n == 0) {
-            answer.push_back(numlist[i]);
-        }
-    }
-
-    return answer;
-}
+*/

@@ -1,3 +1,5 @@
+// Q8. 369 ∞‘¿”
+
 #include <string>
 #include <vector>
 
@@ -22,8 +24,7 @@ int solution(int order) {
 }
 
 
-
-
+/*
 #include <string>
 #include <vector>
 
@@ -47,3 +48,5 @@ int solution(int order) {
 
     return answer;
 }
+
+*/

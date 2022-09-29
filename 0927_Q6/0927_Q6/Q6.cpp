@@ -1,5 +1,3 @@
-=
-
 /* 가장 큰 수 구하기*/
 
 #include <string>
