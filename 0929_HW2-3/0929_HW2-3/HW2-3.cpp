@@ -12,7 +12,7 @@ string solution(string bin1, string bin2) {
     int sum = 0, result1 = 0, result2 = 0;
     int e1 = 1, e2 = 1;
 
-    if (bin1 == "0" && bin2 == "0") {
+    if (bin1 == "0" && bin2 == "0") {       // TestCase 5가 bin1, bin2가 모두 0인 경우, answer == "0" 불가능하여, int zero = 0;으로 둔 후 to_string을 이용함.
         int zero = 0;
         answer = to_string(zero);
         return answer;
