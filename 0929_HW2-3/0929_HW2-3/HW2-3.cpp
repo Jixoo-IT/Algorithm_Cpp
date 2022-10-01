@@ -56,6 +56,53 @@ string solution(string bin1, string bin2) {
 
 }
 
+string makeAnswer(string ans, int i) {
+    if (i == 1) return "1" + ans;
+    else return "0" + ans;
+}
+
+int getDigit(string bin, int i) {
+    if (bin.length() > i) {
+        return bin[bin.length() - i - 1] - '0'; // - '0' 아스키코드 값에서 0을 빼줘야 함.
+    }
+    else {
+        return 0;
+    }
+}
+
+
+
+string solution(string bin1, string bin2) {
+    string answer = "";
+
+    int a, b, c=0, s;
+    int len = bin1.length();
+    if (len < bin2.length()) len = bin2.length();
+    for (int i = 0; i < len; i++) {
+        a = getDigit(bin1, i);
+        b = getDigit(bin2, i);
+        s = (a + b + c) % 2;
+        c = (a + b + c) / 2;
+        answer = makeAnswer(answer, s);
+    }
+    if (c == 1) {
+        answer = makeAnswer(answer, c);
+    }
+
+    return answer;
+
+}
+
+
+
+
+
+
+
+
+
+
+
 // 오류난 코드
 
 /*#include <string>
