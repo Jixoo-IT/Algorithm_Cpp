@@ -10,3 +10,26 @@ int solution(vector<vector<int>> dots) {
     int maxY = max(max(dots[0][1], dots[1][1]), max(dots[2][1], dots[3][1]));
     return (maxY - minY) * (maxX - minX);
 }
+
+
+int getDiff(vector<vector<int>> dots, int dim) {
+    int max= -256, min= 256;    // 절대 될 수 없는 값으로 초기화
+    for (int i = 0; i < dots.size(); i++) {
+        if (max < dots[i][dim]) max = dots[i][dim];
+        if (min > dots[i][dim]) min = dots[i][dim];
+    }
+    return max - min;
+}
+
+
+int solution(vector<vector<int>> dots) {
+    int answer = 0;
+
+    int width, height;
+    width = getDiff(dots, 0);
+    height = getDiff(dots, 0);
+    
+    answer = width * height;
+    return width * height;
+
+}
