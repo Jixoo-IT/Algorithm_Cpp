@@ -82,3 +82,5 @@ ipch/
 *.db-shm
 
 *.db-wal
+
+C\+\+_Lecture/1007_exercise/1007_exercise/exercise.cpp
