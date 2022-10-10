@@ -18,3 +18,24 @@ int main(string A, string B) {		// 0-n-1번 미는 것까지만 유효
 	}
 	return -1;
 }
+
+
+// 추가 풀이
+#include <string>
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+int solution(string A, string B) {
+    int answer = -1;
+    for (int i = 0; i < A.size(); ++i)
+    {
+        if (A == B)
+        {
+            answer = i;
+            break;
+        }
+        rotate(A.begin(), A.end() - 1, A.end());
+    }
+    return answer;
+}
