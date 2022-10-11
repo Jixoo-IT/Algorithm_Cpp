@@ -23,3 +23,19 @@ vector<int> solution(int n) {
 
     return answer;
 }
+
+// ´ä¾È
+
+vector<int> solution(int n) {
+    vector<int> answer;
+
+    for (int i = 2; i <= n; i++) {
+        if (n % i == 0) {
+            answer.push_back(i);
+            while (n % i == 0)
+                n = n / i;
+        }
+    }
+
+    return answer;
+}
