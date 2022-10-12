@@ -1,9 +1,27 @@
 // Q8. 369 게임
 
+// 풀이
 #include <string>
 #include <vector>
 
 using namespace std;
+
+int solution(int order) {
+    int answer = 0;
+
+    for (int i = order; i > 0; i /= 10) {   // for (초기화식; 조건식; 증감식), 조건식이 참일 때 반복, 거짓이면 for문 종료
+        int num = order % 10;
+        if (num == 3 || num == 6 || num == 9) {
+            answer++;
+        }
+        order /= 10;
+    }
+
+    return answer;
+}
+
+
+// 답안
 
 int countDigit(int num, int digit) {
     int count = 0;

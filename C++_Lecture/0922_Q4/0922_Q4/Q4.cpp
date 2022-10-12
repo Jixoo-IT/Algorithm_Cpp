@@ -1,3 +1,27 @@
+// 연속된 수의 합
+
+// 내 풀이 - 등차수열의 합 공식을 이용해 풀이
+#include <string>
+#include <vector>
+
+using namespace std;
+
+vector<int> solution(int num, int total) {
+    vector<int> answer;
+
+    int check = 2 * total / num;
+    int start = (check - num + 1) / 2;
+
+    for (int i = start; i < start + num; i++) {   // 바보: for (start; start < start+ num; start++)
+        answer.push_back(i);
+    }
+
+    return answer;
+}
+
+
+
+// 답안
 #include <string>
 #include <vector>
 
