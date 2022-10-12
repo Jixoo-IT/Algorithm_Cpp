@@ -20,7 +20,7 @@ int main(string A, string B) {		// 0-n-1번 미는 것까지만 유효
 }
 
 
-// 추가 풀이
+// 추가 풀이- algorithm 라이브러리 사용 (rotate 함수)
 #include <string>
 #include <vector>
 #include <algorithm>
@@ -35,7 +35,12 @@ int solution(string A, string B) {
             answer = i;
             break;
         }
-        rotate(A.begin(), A.end() - 1, A.end());
+        rotate(A.begin(), A.end() - 1, A.end());       // rotate 함수
     }
     return answer;
 }
+
+// rotate(v.begin(), v.begin() + 1, v.end());  1칸씩 왼쪽으로 이동
+// rotate(v.begin(), v.begin() + 2, v.end());  2칸씩 왼쪽으로 이동
+// rotate(v.begin(), v.end() - 1 , v.end());   1칸씩 오른쪽으로 이동
+// rotate(v.begin(), v.end() - 3, v.end());    3칸씩 오른쪽으로 이동
