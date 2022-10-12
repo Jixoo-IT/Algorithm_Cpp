@@ -27,7 +27,7 @@ int main(string A, string B) {		// 0-n-1번 미는 것까지만 유효
 using namespace std;
 
 int solution(string A, string B) {
-    int answer = -1;
+    int answer = -1;    // 문자열 밀기가 불가능한 경우에는 for문을 빠져나오기 때문에, answer = -1로 초기화를 해주어야 함.
     for (int i = 0; i < A.size(); ++i)
     {
         if (A == B)
