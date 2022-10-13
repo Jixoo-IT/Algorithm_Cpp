@@ -6,18 +6,38 @@
 
 using namespace std;
 
-// 내 코드
+// 풀이 1
 int solution(int n) {
-	int sum = 1;
+	int fac = 1;
 
 	for (int i = 1; i <= 10; ++i) {
-		sum = sum * i;
+		fac = fac * i;
 
-		if (n < sum) return i - 1;
-		else if (n == sum) return i;
+		if (n < fac) return i - 1;
+		else if (n == fac) return i;
 	}
 }
 
+// 풀이 2 (방식은 풀이 1과 같음)
+int solution(int n) {
+	int answer = 0;
+	int factorial = 1;
+
+	for (int i = 1; i <= 10; i++) {
+		factorial *= i;
+
+		if (n < factorial) {    // n보다 계산값이 더 커졌다면 i-1을 return
+			answer = i - 1;
+			break;
+		}
+		else if (n == factorial) {
+			answer = i;
+			break;
+		}
+	}
+
+	return answer;
+}
 
 // 교수님 코드
 int cal(int n) {
