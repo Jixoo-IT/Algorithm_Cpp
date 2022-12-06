@@ -2,7 +2,7 @@
 
 using namespace std;
 
-// 사과장수
+// 사과장수!
 class FruitSeller {
 private:
 	int APPLE_PRICE;	// 사과 가격
