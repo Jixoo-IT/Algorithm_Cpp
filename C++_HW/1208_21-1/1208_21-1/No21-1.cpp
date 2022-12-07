@@ -16,10 +16,11 @@ private:
 	bool answer;
 public:
 	Mirror() { number = 0; str = ""; beforestr = ""; afterstr = ""; result = "false"; answer = false; }
-	string isMirrorNum(double num);
+	int isMirrorNum(double num);
+	string print_Num();
 };
 
-string Mirror::isMirrorNum(double num) {
+int Mirror::isMirrorNum(double num) {
 	number = num;
 	str = to_string(number);
 	beforestr = str;
@@ -28,19 +29,37 @@ string Mirror::isMirrorNum(double num) {
 	afterstr = str;
 
 	if (beforestr == afterstr) {
-		result = "true";
+		answer = true;
 	}
 	else {
-		result = "false";
+		answer= false;
 	}
-	return result;
+	return answer;
 }
 
+string Mirror::print_Num() {
+	if (answer = true) {
+		result = "true";
+	}
+	else if(answer = false) {
+		result = "false";
+	}
+	cout << result << endl;
+
+	return result;
+}
 
 int main() {
 	Mirror m;
 
 	cout << m.isMirrorNum(767) << endl;
+	m.print_Num();
+	cout << m.isMirrorNum(123321) << endl;
+	m.print_Num();
+	cout << m.isMirrorNum(121212) << endl;
+	m.print_Num();
+	cout << m.isMirrorNum(7575) << endl;
+	m.print_Num();
 
 	return 0;
 }
