@@ -19,7 +19,7 @@ public:
 
 string Phone::first_number(string num) {
  
-    phone_number = num;
+    phone_number = num;     // 클래스 내의 phone_number (private) 사용가능
    
     int size = phone_number.size();
 
