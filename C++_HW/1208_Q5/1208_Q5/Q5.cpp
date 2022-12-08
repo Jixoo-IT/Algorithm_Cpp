@@ -17,27 +17,22 @@ public:
 
 bool P5::solution(string s) {
 	st = s;
-	if (st.size() == 4 || st.size() == 6) {		// .size(), 괄호 주의
-		for (int i = 0; i < st.size(); i++) {
-			if (isdigit(st[i] == false)) {	// 알파벳 ->0, false = 0, 숫자 -> 0이 아닌 수가 나옴.
-				answer = false;
-				break;
-			}
-			else {
-				answer = true;
-			}
-		}
-	}
-	else {
-		answer = false;
+	if (st.size() != 4 && st.size() != 6) {		// .size(), 괄호 주의
+		return false;
 	}
 
-	return answer;
+	for (int i = 0; i < st.size(); i++) {
+		if (isdigit(st[i]) == false) {	// isdigit() '숫자 판별 함수', 알파벳 == 0, 숫자 != 0
+			return false;				// isdigit() 알파벳 == 0, 숫자 != 0
+		}
+	}
+
+	return true;
 }
 
 int main() {
 	P5 p;
-	cout << p.solution("a234") << endl;
+	cout << p.solution("bd3457") << endl;
 	cout << p.solution("1234") << endl;
 	return 0;
 }
