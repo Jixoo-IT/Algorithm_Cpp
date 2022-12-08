@@ -30,6 +30,7 @@ int Return::print_remainder(int n) {
     return 0;
 }
 
+/*
 int main() {
     Return re;
 
@@ -43,4 +44,30 @@ int main() {
     re.print_remainder(b);
 
     return 0;
+}
+*/
+
+
+// 2Â÷ Ç®ÀÌ
+class S7 {
+    int num;
+    int answer;
+public:
+    S7() { num = 0; answer = 0; }
+    int Find(int n);
+};
+
+int S7::Find(int n) {
+    for (int i = 1; i <= n; i++) {
+        if (n % i == 1) {
+            answer = i;
+            return answer;
+        }
+    }
+}
+
+int main() {
+    S7 s;
+    cout << s.Find(10) << endl;
+    cout << s.Find(12) << endl;
 }
