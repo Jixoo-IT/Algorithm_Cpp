@@ -38,7 +38,7 @@ string Phone::print_number(string num) {
     cout << phone_number << "->" << answer << endl;
     return "";
 }
-
+/*
 int main() {
     Phone ph;
 
@@ -47,6 +47,39 @@ int main() {
 
     ph.first_number(a);
     ph.print_number(a);
+
+    return 0;
+}
+*/
+
+// 2Â÷
+class P7 {
+    string num;
+    string answer;
+public:
+    P7() { num = ""; answer = ""; }
+    string Hide(string n);
+};
+
+string P7::Hide(string n) {
+    answer = "";
+    num = n;
+    
+    for (int i = 0; i < num.size() - 4; i++) {
+        answer += "*";
+    }
+    for (int i = num.size() - 4; i < num.size(); i++) {
+        answer += num.at(i);
+    }
+    return answer;
+}
+
+int main() {
+    P7 p;
+    
+    cout << p.Hide("027778888") << endl;
+    cout << p.Hide("01033334444") << endl;
+    cout << p.Hide("01033789944") << endl;
 
     return 0;
 }
