@@ -6,6 +6,7 @@
 
 using namespace std;
 
+/*
 class P9 {
 private:
     int a, b, r;
@@ -41,4 +42,45 @@ int main() {
     P9 p;
     p.solution(3, 12);
     p.solution(2, 5);
+}
+*/
+
+
+/// 2차 시도_ 생성자에 변수 초기화
+class S9 {
+private:
+    int a, b, c;
+    int Max, Min;
+public:
+    S9() {
+        a = 0;
+        b = 0;
+        c = 0;
+        Max = 0;
+        Min = 0;
+    }
+    int gcd(int a, int b);
+    int lcm(int a, int b);
+};
+
+
+int S9:: gcd(int a, int b) {        // 최대공약수 구하기
+    while (b != 0) {
+        c = a % b;
+        a = b;
+        b = c;
+    }
+    Max = a;
+    return Max;
+}
+
+int S9::lcm(int a, int b) {
+    Min = a * b / gcd(a, b);
+    return Min;
+}
+
+int main() {
+    S9 s;
+    cout << s.gcd(3, 12) << ", " << s.lcm(3, 12) << endl;
+    cout << s.gcd(2, 5) << ", " << s.lcm(2, 5) << endl;
 }
