@@ -1,24 +1,34 @@
 #include <iostream>
-#include <vector>
 #include <algorithm>
 using namespace std;
 
+struct coordinate {		// array 구조체 생성
+	int x, y;
+};
+
+bool compare(coordinate a, coordinate b) {
+	if (a.x == b.x) {
+		return a.y < b.y;
+	}
+	else {
+		return a.x < b.x;
+	}
+}
+struct coordinate arr[100001];
+
 int main() {
 	int n, x, y;
-	vector<pair<int, int>> v;
 	cin >> n;
 
 	for (int i = 0; i < n; i++) {
-		cin >> x >> y;
-		v.push_back({x, y});
-
+		cin >> arr[i].x >> arr[i].y;
 	}
 
-	sort(v.begin(), v.end());
+	sort(arr, arr+ n, compare);
 
 
 	for (int i = 0; i < n; i++) {
-		cout << v[i].first << " "<< v[i].second << "\n";
+		cout << arr[i].x << " " << arr[i].y << "\n";
 	}
 
 	return 0;
