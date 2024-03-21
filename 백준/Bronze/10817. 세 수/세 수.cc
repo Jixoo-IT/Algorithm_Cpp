@@ -14,7 +14,7 @@ int main() {
 	v.push_back(b);
 	v.push_back(c);
 
-	sort(v.begin(), v.end()), greater<int>();
+	sort(v.begin(), v.end(), greater<int>());
 
 	cout << v[1];
 
