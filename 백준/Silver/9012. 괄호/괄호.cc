@@ -1,3 +1,47 @@
+// 풀이 1_ICPC 풀이안 (Stack X)
+
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main() {
+	ios_base::sync_with_stdio(false);
+	cin.tie(0);
+
+	int T;
+	cin >> T;
+
+	for (int i = 0; i < T; i++) {
+		string str;
+		cin >> str;
+
+		int cnt = 0;
+		int no = 0;
+
+		for (char c : str) {		// 범위 기반 for문
+			if (c == '(') {
+				cnt++;
+			} else if (cnt == 0) {
+				no = 1;
+			}
+			else if (c == ')') {
+				cnt--;
+			}
+		}
+
+		if (cnt != 0) {
+			no = 1;
+		}
+
+		cout << (no ? "NO" : "YES") << "\n";
+	}
+	return 0;
+}
+
+
+// 풀이 2_Stack O
+
+/*
 #include <iostream>
 #include <string>
 #include <stack>
@@ -39,3 +83,4 @@ int main() {
 
 	return 0;
 }
+*/
