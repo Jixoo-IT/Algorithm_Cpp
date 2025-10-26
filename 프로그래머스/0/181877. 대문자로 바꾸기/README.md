@@ -1,10 +1,10 @@
 # [level 0] 대문자로 바꾸기 - 181877 
 
-[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/181877?language=cpp) 
+[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/181877?language=java) 
 
 ### 성능 요약
 
-메모리: 4.02 MB, 시간: 0.02 ms
+메모리: 84.3 MB, 시간: 0.02 ms
 
 ### 구분
 
@@ -16,7 +16,7 @@
 
 ### 제출 일자
 
-2025년 09월 26일 22:27:10
+2025년 10월 26일 16:58:40
 
 ### 문제 설명
 
