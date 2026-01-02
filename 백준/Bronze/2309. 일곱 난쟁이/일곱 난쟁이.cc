@@ -1,39 +1,31 @@
 #include <iostream>
-#include <vector>
 #include <algorithm>
-
+#include <vector>
 using namespace std;
+int a[9], sum;
 
-int main() {
-	int height, sum = 0, diff = 0, cancel1 = 0, cancel2 = 0;
-	vector<int> v;
+int main(){
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
+    cout.tie(0);
 
-	for (int i = 0; i < 9; i++) {
-		cin >> height;
-		sum += height;
+    for (int i = 0; i < 9; i++){
+        cin >> a[i];
+        sum += a[i];
+    }
 
-		v.push_back(height);
-	}
+    sort(a, a + 9);
 
-	diff = sum - 100;
-
-	sort(v.begin(), v.end());
-
-	for (int i = 0; i < 9; i++) {
-		for (int j = i + 1; j < 9; j++) {
-			if (diff == v[i] + v[j]) {
-				cancel1 = i;
-				cancel2 = j;
-			}
-		}
-	}
-
-	v.erase(v.begin() + cancel1);	// i번째 원소 vector에서 삭제
-	v.erase(v.begin() + cancel2 - 1);	// 앞 코드에서 i번째 원소가 삭제되었으니, j번째 원소는 j-1번째로 옮겨짐!
-
-	for (auto a : v){
-		cout << a << "\n";
-	}
-
-	return 0;
+    for (int i=0;i<9;i++){
+        for (int j = i+1;j<9;j++){
+            if (sum - (a[i] + a[j]) == 100){
+                for (int k = 0; k < 9; k++){
+                    if (k != i && k != j){
+                        cout << a[k] << "\n";
+                    }
+                }
+                return 0;
+            }
+        }
+    }
 }
