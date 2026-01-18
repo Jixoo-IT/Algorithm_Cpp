@@ -1,55 +1,59 @@
 #include <iostream>
-#include <algorithm>
+#include <queue>
+#include <tuple>
+#include <vector>
+#include <cstring>
 using namespace std;
 
-int T, m, n, k, x, y, answer;
-int field[50][50];
-int dirX[4] = { 0, 0, -1, 1 };		// 좌, 우
-int dirY[4] = { 1, -1, 0, 0 };		// 상, 하
+int dy[4] = {-1, 0, 1, 0};
+int dx[4] = {0, -1, 0, 1};
+int arr[52][52], visited[52][52];
+int t, n, m, k, y, x;
 
-void dfs(int x, int y) {
-	field[x][y] = 0;		// 방문했으니, 다시 배추를 0으로
-	for (int i = 0; i < 4; i++) {
-		int newX = x + dirX[i];
-		int newY = y + dirY[i];
-		
-		if (newX < 0 || newY < 0 || newX >= m || newY >= n) {		// 상하좌우를 했을 때, (0, 0)이라면 map을 벗어나게 됨. ex) (-1, 0)
-			continue;
-		}
+int main(){
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+    cin >> t;
 
-		if(field[newX][newY] == 1) {		// 상하좌우에 배추가 있다면, 그 위치에서 다시 dfs 탐색
-			dfs(newX, newY);
-		}
-	}
-}
+    while(t--){
+        memset(arr, 0, sizeof(arr));
+        memset(visited, 0, sizeof(visited));
+        int cnt = 0;
 
-int main() {
-	cin >> T;
+        cin >> m >> n >> k;
 
-	for (int h = 0; h < T; h++) {
-		cin >> m >> n >> k;		// m: 배추밭의 가로 길이, n: 배추밭의 세로 길이
+        while (k--){
+            cin >> x >> y;
+            arr[y][x] = 1;      //[세로][가로]
+        }
 
-		for (int i = 0; i < k; i++) {		// k: 배추가 심어진 위치의 개수
-			cin >> x >> y;
-			field[x][y] = 1;
-		}
+        for (int i=0; i<n; i++){
+            for (int j=0; j<m; j++){
+                if (arr[i][j] == 1 && visited[i][j] == 0){
+                    queue<pair<int, int>> q;
+                    visited[i][j] = 1;
+                    q.push({i, j});
 
-		for (int i = 0; i < m; i++) {
-			for (int j = 0; j < n; j++) {
-				if (field[i][j] == 1) {
-					dfs(i, j);
-					answer++;
-				}
-			}
-		}
+                    while(q.size()){
+                        tie(y, x) = q.front();
+                        q.pop();
 
-		cout << answer << "\n";
+                        for (int k=0; k<4; k++){
+                            int ny = y + dy[k];
+                            int nx = x + dx[k];
 
-		answer = 0;
+                            if (ny < 0 || ny >= n || nx < 0 || nx >= m || arr[ny][nx] == 0) continue;
+                            if (visited[ny][nx]) continue;
 
-		for (int i = 0; i < m; i++) {		// map 초기화
-			fill(field[i], field[i] + n, 0);
-		}
-	}
-	return 0;
+                            visited[ny][nx] = 1;
+                            q.push({ny, nx});
+                        }
+                    }
+                    cnt++;
+                }
+            }
+        }
+        cout << cnt << "\n";
+    }
+    return 0;
 }
