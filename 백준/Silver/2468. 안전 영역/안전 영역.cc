@@ -1,83 +1,48 @@
 #include <iostream>
-#include <queue>
-#include <vector>
-#include <cstring>
 #include <algorithm>
+#include <cstring>
 using namespace std;
+int dy[4] = {-1, 0, 1, 0};
+int dx[4] = {0, -1, 0, 1};
+int n, ans, arr[104][104], visited[104][104];
 
-int N;
-int input[101][101];
-int board[101][101];
-bool visit[101][101];
-int dx[4] = { 0, 0, -1, 1 };
-int dy[4] = { -1, 1, 0, 0 };
-queue<pair<int, int>> q;
-vector<int> v;
-int cnt = 0;
+void dfs(int y, int x, int h){
+    visited[y][x] = 1;
+    for (int i=0; i<4; i++){
+        int ny = y + dy[i];
+        int nx = x + dx[i];
 
-void bfs(int x, int y) {
-	visit[x][y] = true;
-	q.push(make_pair(x, y));
-
-	while (!q.empty()) {
-		x = q.front().first;
-		y = q.front().second;
-		q.pop();
-
-		for (int i = 0; i < 4; i++) {
-			int nx = x + dx[i];
-			int ny = y + dy[i];
-
-			if (nx >= 0 && ny >= 0 && nx < N && ny < N) {
-				if (board[nx][ny] && !visit[nx][ny]) {
-					visit[nx][ny] = true;
-					q.push(make_pair(nx, ny));
-				}
-			}
-		}
-	}
+        if (ny < 0 || ny >= n || nx < 0 || nx >= n) continue;
+        if (arr[ny][nx] > h && !visited[ny][nx]){
+            dfs(ny, nx, h);
+        }
+    }
 }
 
-int main() {
-	int maxH = -1;
-	cin >> N;
+int main(){
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+    cin >> n;
 
-	for (int i = 0; i < N; i++) {
-		for (int j = 0; j < N; j++) {
-			cin >> input[i][j];
-			if (input[i][j] > maxH) {
-				maxH = input[i][j];
-			}
-		}
-	}
+    for (int i=0; i<n; i++){
+        for (int j=0; j<n; j++){
+            cin >> arr[i][j];
+        }
+    }
 
-	for (int h = 1; h <= maxH; h++) {
-		for (int i = 0; i < N; i++) {
-			for (int j = 0; j < N; j++) {
-				if (input[i][j] < h) {
-					board[i][j] = 0;
-				}
-				else {
-					board[i][j] = 1;
-				}
-			}
-		}
-
-		for (int i = 0; i < N; i++) {
-			for (int j = 0; j < N; j++) {
-				if (board[i][j] && !visit[i][j]) {
-					cnt++;
-					bfs(i, j);
-				}
-			}
-		}
-		v.push_back(cnt);
-
-		memset(board, 0, sizeof(board));
-		memset(visit, 0, sizeof(visit));
-		cnt = 0;
-	}
-
-	int max = *max_element(v.begin(), v.end());
-	cout << max;
+    for (int h=0; h<101; h++){      // 아무 지역도 물에 잠기지 않을 수 있음
+        memset(visited, 0, sizeof(visited));
+        int cnt = 0;
+        for (int i=0; i<n; i++){
+            for (int j=0; j<n; j++){
+                if (arr[i][j] > h && !visited[i][j]){
+                    dfs(i, j, h);
+                    cnt++;
+                }
+            }
+        }
+        ans = max(ans, cnt);
+    }
+    cout << ans;
+    return 0;
 }
