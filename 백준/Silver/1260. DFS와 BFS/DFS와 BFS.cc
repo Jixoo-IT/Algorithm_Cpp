@@ -1,83 +1,59 @@
-#include <iostream>
-#include <vector>
-#include <queue>
-#include <stack>
-#include <algorithm>
-#include <string>
+#include <bits/stdc++.h>
 using namespace std;
+int a, b, n, m, v;
+vector<int> adj[1004];
+int visited[1004];
 
-vector<int> v[1001];	// vector를 이용해 인접 리스트 구현
-int n, m, startNode;
-
-bool cmp(int a, int b) {
-	return a > b;
+void DFS(int x){
+    visited[x] = 1;
+    cout << x << " ";
+    for (int i: adj[x]){
+        if (!visited[i]){
+            DFS(i);
+        }
+    }
 }
 
-void dfs() {		// dfs - 스택, 재귀함수를 이용 | 이외에는 bfs와 코드 같음
-	vector<bool>visited(n + 1);
-	stack<int> s;
-	s.push(startNode);
+void BFS(int x){
+    queue<int> q;
+    visited[x] = 1;
+    q.push(x);
 
-	while (!s.empty()) {
-		int cur = s.top();
-		s.pop();
-		if (!visited[cur]) {
-			cout << cur << " ";
-		}
-		visited[cur] = true;
-		for (auto a : v[cur]) {
-			if (!visited[a]) {
-				s.push(a);
-			}
-		}
-	}
-}
+    while (!q.empty()){
+        int cur = q.front();
+        q.pop();
+        cout << cur << " ";
 
-void bfs() {
-	vector<bool>visited(n + 1);		// bfs - queue 이용
-	queue<int> q;
-	q.push(startNode);
-
-	while (!q.empty()) {
-		int cur = q.front();
-		q.pop();
-		if (!visited[cur]) {
-			cout << cur << " ";
-		}
-		visited[cur] = true;
-		for (auto a : v[cur]) {
-			if (!visited[a]) {
-				q.push(a);
-			}
-		}
-	}
-
+        for (int i: adj[cur]){
+            if (!visited[i]){
+                visited[i] = 1;
+                q.push(i);
+            }
+        }
+    }
 }
 
 
-int main() {
-	cin >> n >> m >> startNode;
+int main(){
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+    cin >> n >> m >> v;
 
-	int a, b;
+    while (m--){
+        cin >> a >> b;
+        adj[a].push_back(b);
+        adj[b].push_back(a);
+    }
 
-	for (int i = 0; i < m; i++) {
-		cin >> a >> b;
-		v[a].push_back(b);
-		v[b].push_back(a);
-	}
+    for (int i=1; i<=n; i++){
+        sort(adj[i].begin(), adj[i].end());
+    }
 
-	for (int i = 1; i <= n; i++) {
-		sort(v[i].begin(), v[i].end(), cmp);
-	}
+    DFS(v);
+    cout << "\n";
 
-	dfs();
-	cout << endl;
+    memset(visited, 0, sizeof(visited));
+    BFS(v);
 
-	for (int i = 1; i <= n; i++) {
-		sort(v[i].begin(), v[i].end());
-	}
-
-	bfs();
-
-	return 0;
+    return 0;
 }
