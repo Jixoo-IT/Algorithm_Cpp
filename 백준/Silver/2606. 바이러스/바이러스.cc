@@ -1,42 +1,33 @@
-#include <iostream>
-#include <queue>
+#include <bits/stdc++.h>
 using namespace std;
+int n, m, cnt;
+vector<int> v[105];
+int visited[105];
 
-int n, m, cnt = 0;
-int arr[101][101];
-bool visited[101] = { 0, };
-queue<int> q;
-
-void bfs(int v) {
-	q.push(v);
-	visited[v] = true;
-
-	while (!q.empty()) {
-		v = q.front();
-		q.pop();
-
-		for (int i = 1; i <= n; i++) {
-			if (arr[v][i] && visited[i] == 0) {
-				q.push(i);
-				visited[i] = true;
-				cnt++;
-			}
-		}
-	}
+void DFS(int x){
+    visited[x] = 1;
+    for (int i: v[x]){
+        if (!visited[i]){
+            cnt++;
+            DFS(i); 
+        }
+    }
 }
 
-int main() {
-	cin >> n >> m;
+int main(){
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+    cin >> n >> m;
 
-	for (int i = 0; i < m; i++) {
-		int a, b;
-		cin >> a >> b;
-		arr[a][b] = 1;
-		arr[b][a] = 1;
-	}
+    for (int i=0; i<m; i++){
+        int a, b;
+        cin >> a >> b;
+        v[a].push_back(b);
+        v[b].push_back(a);
+    }
 
-	bfs(1);
-	cout << cnt;
-	
-	return 0;
+    DFS(1);
+
+    cout << cnt;
+    return 0;
 }
