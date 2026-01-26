@@ -1,38 +1,35 @@
-#include <iostream>
-#include <string.h>
+#include <bits/stdc++.h>
 using namespace std;
+int mx = -1, target, cnt, arr[26];
+string s;
 
-char a[1000005];
-int arr[26];
+int main(){
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+    cin >> s;
 
-int main() {
-	int max = 0;
-	int size;
-	char answer;
+    for (char c: s){
+        arr[toupper(c) - 'A']++;
+    }
 
-	cin >> a;
-	size = strlen(a);
+    for (int i=0; i<26; i++){
+        if (arr[i] > mx){
+            mx = arr[i];
+            target = i;
+        }
+    }
 
-	for (int i = 0; i < size; i++) {
-		if (a[i] >= 'a') {
-			arr[a[i] - 'a']++;
-		}
-		else {
-			arr[a[i] - 'A']++;
-		}
-	}
+    for (int i=0; i<26; i++){
+        if (mx == arr[i]){
+            cnt++;
+        }
+    }
+    
+    if (cnt >= 2) {
+        cout << "?";
+    } else {
+        cout << char(target + 'A');   
+    }
 
-	for (int i = 0; i < 26; i++) {
-		if (arr[i] == max) {
-			answer = '?';
-		}
-		else if (arr[i] > max) {
-			max = arr[i];
-			answer = 'A' + i;
-		}
-	}
-
-	cout << answer;
-
-	return 0;
+    return 0;
 }
