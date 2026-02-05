@@ -1,31 +1,35 @@
-#include <iostream>
+#include <bits/stdc++.h>
 using namespace std;
-
 int n, m;
-int arr[9] = { 0, };
-bool visited[9] = { 0, };
+int arr[10];
+bool visited[10];
 
-void dfs(int cnt) {
-	if (cnt == m) {
-		for (int i = 0; i < m; i++) {
-			cout << arr[i] << " ";
-		}
-		cout << "\n";
+void dfs(int idx){
+    if (idx == m){
+        for (int i=0; i<m; i++){
+            cout << arr[i] << " ";
+        }
+        cout << "\n";
+        return;
+    }
 
-		return;
-	}
+    for (int i=1; i<=n; i++){
+        if (!visited[i]){
+            visited[i] = 1;
+            arr[idx] = i;
 
-	for (int i = 1; i <= n; i++) {
-		if (!visited[i]) {
-			visited[i] = true;
-			arr[cnt] = i;
-			dfs(cnt + 1);
-			visited[i] = false;
-		}
-	}
+            dfs(idx+1);
+
+            visited[i] = 0;
+        }
+    }
 }
 
-int main() {
-	cin >> n >> m;
-	dfs(0);
+int main(){
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+    cin >> n >> m;
+
+    dfs(0);
+    return 0;
 }
