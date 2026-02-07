@@ -1,35 +1,29 @@
 #include <iostream>
 #include <algorithm>
+#include <vector>
 using namespace std;
+int n, a, b;
+vector<pair<int, int>> v;
 
-struct coordinate {		// array 구조체 생성
-	int x, y;
-};
-
-bool compare(coordinate a, coordinate b) {
-	if (a.x == b.x) {
-		return a.y < b.y;
-	}
-	else {
-		return a.x < b.x;
-	}
+bool cmp(pair<int, int> a, pair<int, int> b){
+    if (a.first != b.first) return a.first < b.first;
+    else return a.second < b.second;
 }
-struct coordinate arr[100001];
 
-int main() {
-	int n, x, y;
-	cin >> n;
+int main(){
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+    cin >> n;
 
-	for (int i = 0; i < n; i++) {
-		cin >> arr[i].x >> arr[i].y;
-	}
+    while (n--){
+        cin >> a >> b;
+        v.push_back({a, b});
+    }
 
-	sort(arr, arr+ n, compare);
+    sort(v.begin(), v.end(), cmp);
 
-
-	for (int i = 0; i < n; i++) {
-		cout << arr[i].x << " " << arr[i].y << "\n";
-	}
-
-	return 0;
+    for (const auto& a: v){
+        cout << a.first << " " << a.second << "\n";
+    }
 }
+
