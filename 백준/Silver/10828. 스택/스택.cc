@@ -1,51 +1,36 @@
 #include <iostream>
-#include <string>
 #include <stack>
-
 using namespace std;
+int n, m;
+string s;
+stack<int> st;
 
-int main() {
-	int N, num;
-	cin >> N;
+int main(){
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+    cin >> n;
 
-	stack<int> st;
-	string str;
+    for (int i=0; i<n; i++){
+        cin >> s;
 
-	for (int i = 0; i < N; i++) {
-		cin >> str;
+        if (s == "push"){
+            cin >> m;
+            st.push(m);
+        } else if (s == "pop"){
+            if (st.size()) {
+                cout << st.top() << "\n";
+                st.pop();
+            }
+            else cout << "-1" << "\n";
+        } else if (s == "size"){
+            cout << st.size() << "\n";
+        } else if (s == "empty"){
+            cout << st.empty() << "\n";
+        } else if (s == "top"){
+            if (st.size()) cout << st.top() << "\n";
+            else cout << "-1" << "\n";
+        }
+    }
 
-		if (str == "push") {
-			cin >> num;
-			st.push(num);
-		}
-		else if (str == "pop") {
-			if (st.empty()) {
-				cout << "-1" << '\n';
-			}
-			else {
-				cout << st.top() << '\n';
-				st.pop();
-			}
-		}
-		else if (str == "size") {
-			cout << st.size() << '\n';
-		}
-		else if (str == "empty") {
-			if (st.empty()) {
-				cout << "1" << '\n';
-			}
-			else {
-				cout << "0" << '\n';
-			}
-		}
-		else if (str == "top") {
-			if (st.empty()) {
-				cout << "-1" << '\n';
-			}
-			else {
-				cout << st.top() << '\n';
-			}
-		}
-	}
-	return 0;
+    return 0;
 }
