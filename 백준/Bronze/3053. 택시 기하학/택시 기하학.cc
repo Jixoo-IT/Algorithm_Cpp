@@ -1,18 +1,12 @@
-#include <iostream>
-#include <cmath>
-using namespace std;
-double r;
-
-int main(){
-    ios::sync_with_stdio(0);
-    cin.tie(0);
-    cin >> r;
-
-    double pi = acos(-1);
-
-    cout << fixed;
-    cout.precision(6);
-    
-    cout << pi * r * r << "\n" << 2 * r * r;
-    return 0;
-}
+<html>
+<head><title>502 Bad Gateway</title></head>
+<body>
+<center><h1>502 Bad Gateway</h1></center>
+</body>
+</html>
+<!-- a padding to disable MSIE and Chrome friendly error page -->
+<!-- a padding to disable MSIE and Chrome friendly error page -->
+<!-- a padding to disable MSIE and Chrome friendly error page -->
+<!-- a padding to disable MSIE and Chrome friendly error page -->
+<!-- a padding to disable MSIE and Chrome friendly error page -->
+<!-- a padding to disable MSIE and Chrome friendly error page -->
