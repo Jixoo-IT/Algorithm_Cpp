@@ -1,39 +1,30 @@
 #include <iostream>
-#include <string>
-#include <vector>
 #include <algorithm>
+#include <vector>
 using namespace std;
+int n, m;
+string s;
+vector<string> v;
 
-bool compare(string a, string b) {
-	if (a.size() != b.size()) {
-		return a.size() < b.size();
-	}
-	else {
-		return a < b;
-	}
+bool cmp(string a, string b){
+    if (a.size() != b.size()) return a.size() < b.size();
+    else return a < b;
 }
 
+int main(){
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+    cin >> n;
 
-int main() {
-	int n;
-	string str;
-	string arr[20001];
+    for (int i=0; i<n; i++){
+        cin >> s;
+        v.push_back(s);
+    }
 
-	cin >> n;
+    sort(v.begin(), v.end(), cmp);
 
-	for (int i = 0; i < n; i++) {
-		cin >> arr[i];
-	}
-
-	sort(arr, arr + n, compare);
-
-
-	for (int i = 0; i < n; i++) {
-		if (arr[i] == arr[i + 1]) {
-			continue;
-		}
-		cout << arr[i] << "\n";
-	}
-
-	return 0;
+    for (int i=0; i<n; i++){
+        if (v[i] != v[i+1]) cout << v[i] << "\n";
+    }
+    return 0;
 }
